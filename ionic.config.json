@@ -1,0 +1,7 @@
+{
+  "name": "UnusualCode",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

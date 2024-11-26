@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true" class="register-content">
+  <div class="register-container">
+    <div class="logo-title-container">
+      <img src="assets/icon/logo.png" alt="Logo del proyecto" class="logo-image" />
+      <h1 class="register-title">UnusualCode</h1>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()" class="register-form">
+      <ion-item>
+        <ion-label position="floating">Nombre Completo</ion-label>
+        <ion-input
+          formControlName="fullname"
+          [(ngModel)]="userData.fullname"
+          name="fullname"
+          required>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('fullname')?.hasError('required') && registerForm.get('fullname')?.touched" color="danger">
+          El nombre completo es obligatorio.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input
+          formControlName="email"
+          [(ngModel)]="userData.email"
+          type="email"
+          required>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched" color="danger">
+          El correo electrónico es obligatorio.
+        </ion-note>
+        <ion-note *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" color="danger">
+          El correo electrónico no es válido.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          formControlName="password"
+          [(ngModel)]="password"
+          type="password"
+          required>
+        </ion-input>
+        <ion-note *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched" color="danger">
+          La contraseña es obligatoria.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmar Contraseña</ion-label>
+        <ion-input
+          formControlName="confPassword"
+          [(ngModel)]="confPassword"
+          type="password"
+          required>
+        </ion-input>
+        <ion-note *ngIf="registerForm.hasError('passwordMismatch') && registerForm.touched" color="danger">
+          Las contraseñas no coinciden.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de Usuario</ion-label>
+        <ion-select
+          [(ngModel)]="userData.typeUser"
+          name="typeUser"
+          placeholder="Selecciona el tipo de usuario"
+          required>
+          <ion-select-option value="2">Usuario</ion-select-option>
+          <ion-select-option value="3">Programador</ion-select-option>
+        </ion-select>
+        <ion-note *ngIf="registerForm.get('typeUser')?.hasError('required') && registerForm.get('typeUser')?.touched" color="danger">
+          Selecciona un tipo de usuario.
+        </ion-note>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" class="register-button">Registrarse</ion-button>
+      <p><a [routerLink]="['/login']" class="register-link">Volver</a></p>
+
+      <!-- Mensaje de error general -->
+      <div *ngIf="error" style="color: red; margin-top: 10px;">
+        <p>{{ error }}</p>
+      </div>
+    </form>
+  </div>
+</ion-content>

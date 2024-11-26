@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-container">
+    <img src="assets/icon/logo.png" alt="Logo del proyecto" class="logo-image" />
+    <h1 class="login-title">UnusualCode</h1>
+    <form (ngSubmit)="loginUser()" class="login-form">
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      </ion-item>
+      <ion-button expand="full" class="login-button" type="submit">Iniciar Sesión</ion-button>
+      @if (isLoading) {
+        <ion-spinner name="bubbles"></ion-spinner>
+      }
+      @if(error){
+        <div style="color: red;">
+          <p>{{error}}</p>
+        </div>
+      }
+    </form>
+    <p class="register-link">¿No tienes cuenta? <a routerLink="/register" class="register-text">Regístrate</a></p>
+  </div>
+</ion-content>

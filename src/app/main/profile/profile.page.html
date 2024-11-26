@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+  <div class="page-container">
+    <ion-card class="card-container">
+      <h1>Datos personales</h1>
+      <ion-card-content>
+        <p class="title">Nombre:</p>
+        <p class="info">{{ user['fullname'] }}</p>
+      </ion-card-content>
+      <ion-card-content>
+        <p class="title">Correo:</p>
+        <p class="info">{{ user['email'] }}</p>
+      </ion-card-content>
+    </ion-card>
+    <button (click)="goBack()" class="button-link">Volver</button>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

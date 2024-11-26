@@ -1,0 +1,21 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<header class="header-container">
+  <div class="header-logo">
+    <p>UnusualCode</p>
+  </div>
+  <div class="header-toolbar">
+    <!-- Botón del menú -->
+    <div class="menu-container">
+      <button class="menu-button">
+        <span class="material-icons">account_circle</span>
+        <span>{{ user['fullname'] }}</span>
+        <span class="material-icons">arrow_drop_down</span>
+      </button>
+      <!-- Menú desplegable -->
+      <ul class="dropdown-menu">
+        <li><a [routerLink]="['/profile']">Ver Perfil</a></li>
+        <li><a (click)="logout()">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
